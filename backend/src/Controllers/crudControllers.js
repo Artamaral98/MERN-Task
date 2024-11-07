@@ -109,6 +109,9 @@ class CrudControllers {
         }
     }
     
+    teste = (req, res) => {
+        res.json('ok')
+    }
 
 
 
