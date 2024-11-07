@@ -1,4 +1,5 @@
 import CurrencyInput from 'react-currency-input-field';
+import { firstLetterToUpperCase } from '../utils/firstLetterToUpperCase';
 
 const Addtask = ({newTaskName, setNewTaskName, newTaskDeadline, setNewTaskDeadline, newTaskCost, setNewTaskCost, handleAddTask}) => {
     
@@ -8,7 +9,7 @@ const Addtask = ({newTaskName, setNewTaskName, newTaskDeadline, setNewTaskDeadli
           type="text"
           placeholder="Nome da Tarefa"
           value={newTaskName}
-          onChange={(e) => setNewTaskName(e.target.value)}
+          onChange={(e) => setNewTaskName(firstLetterToUpperCase(e.target.value))}
           className="p-2 border border-gray-300 rounded"
         />
         <input
