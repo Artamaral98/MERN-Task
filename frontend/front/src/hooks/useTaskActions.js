@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import api from '../api/api';
 import toast from 'react-hot-toast';
+import { firstLetterToUpperCase } from '../utils/firstLetterToUpperCase';
 
 const useTaskActions = (tasks, setTasks) => {
     const [newTask, setNewTask] = useState({ name: '', deadline: '', cost: '' });
@@ -13,8 +14,11 @@ const useTaskActions = (tasks, setTasks) => {
     //Adiciona novas tarefas
     const handleAddTask = async () => {
       try { 
+          
+          const capitalizeFirstLetter = firstLetterToUpperCase(newTask.name)
+          
           const response = await api.post('add', {
-            name: newTask.name,
+            name: capitalizeFirstLetter,
             deadline: newTask.deadline,
             cost: newTask.cost,
           });
