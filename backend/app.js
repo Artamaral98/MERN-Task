@@ -16,7 +16,7 @@ class App {
     }
 
     middlewares() {
-        this.app.use(cors({origin: ['https://mern-task-front-mu.vercel.app'], methods:["POST", "GET"], credentials: true}))
+        this.app.use(cors({origin: ['https://mern-task-front-mu.vercel.app'], methods:["POST", "GET", "PUT", "DELETE"], credentials: true}))
         this.app.use(bodyParser.json());
 
     
