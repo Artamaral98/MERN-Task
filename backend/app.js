@@ -23,7 +23,7 @@ class App {
     }
 
     routes(){
-        this.app.use('/api/', crudRoutes)
+        this.app.use('/', crudRoutes)
         
     }
     
