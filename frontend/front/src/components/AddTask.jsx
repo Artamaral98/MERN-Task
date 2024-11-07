@@ -22,7 +22,6 @@ const Addtask = ({newTaskName, setNewTaskName, newTaskDeadline, setNewTaskDeadli
         placeholder="Digite o valor"
         className="input-class p-2 border border-gray-300 rounded"
         decimalsLimit={2}
-        decimalSeparator=","
         groupSeparator="."
         prefix="R$ "
         value={newTaskCost}
