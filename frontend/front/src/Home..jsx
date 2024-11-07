@@ -30,11 +30,11 @@ const App = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="container mx-auto p-8 bg-gray-100 min-h-screen">
-        <h1 className="text-3xl font-bold text-center mb-8">Tarefas</h1>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-gray-100 min-h-screen">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-8">Tarefas</h1>
 
         <div className="overflow-x-auto">
-          <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+          <table className="w-full max-w-screen-lg mx-auto bg-white shadow-md rounded-lg overflow-hidden">
             <thead>
               <Header />
             </thead>
