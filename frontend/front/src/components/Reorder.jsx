@@ -1,5 +1,3 @@
-
-import { useDrag, useDrop } from 'react-dnd';
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { FaArrowUp } from "react-icons/fa";
@@ -17,28 +15,10 @@ const Reorder = ({tasks, setTasks, task, index, handleEdit, openDeleteModal }) =
     setTasks(updatedTasks);
   };
 
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: 'TASK',
-    item: { index },
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
-    }),
-  }));
-
-  const [, drop] = useDrop(() => ({
-    accept: 'TASK',
-    hover: (draggedItem) => {
-      if (draggedItem.index !== index) {
-        moveTask(draggedItem.index, index);
-        draggedItem.index = index;
-      }
-    },
-  }));
 
   return (
     <tr
-      ref={(node) => drag(drop(node))}
-      style={{ backgroundColor: task.cost >= 1000 ? '#d4c818' : 'white', opacity: isDragging ? 0.5 : 1 }}
+      style={{ backgroundColor: ParseInt(task.cost >= 1000) ? '#d4c818' : 'white' }}
       className="border-b"
     >
       <td className="py-3 px-4">{task.name}</td>
@@ -50,7 +30,6 @@ const Reorder = ({tasks, setTasks, task, index, handleEdit, openDeleteModal }) =
             groupSeparator="."
             prefix="R$ "
             value={task.cost}
-            suffix=",00"
             className="border-none appearance-none bg-transparent focus:outline-none"
           />
       </td>
