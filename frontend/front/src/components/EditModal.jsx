@@ -29,10 +29,9 @@ const EditModal = ({isEditModalOpen, editTaskName, setEditTaskName, setIsEditMod
                 />
                    
                 <input
-                  type="number"
-                  placeholder="Custo"
-                  value={editTaskCost}
-                  onChange={(e) => setEditTaskCost(e.target.value)}
+                  type="date"
+                  value={editTaskDeadline}
+                  onChange={(e) => setEditTaskDeadline(e.target.value)}
                   className="w-full p-2 border border-gray-300 rounded mb-4"
                 />
                    
