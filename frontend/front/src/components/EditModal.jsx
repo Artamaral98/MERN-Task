@@ -18,7 +18,14 @@ const EditModal = ({isEditModalOpen, editTaskName, setEditTaskName, setIsEditMod
                   onChange={(e) => setEditTaskName(firstLetterToUpperCase(e.target.value))}
                   className="w-full p-2 border border-gray-300 rounded mb-4"
                 />
-                   
+                     
+                <input
+                  type="date"
+                  value={editTaskDeadline}
+                  onChange={(e) => setEditTaskDeadline(e.target.value)}
+                  className="w-full p-2 border border-gray-300 rounded mb-4"
+                />
+
                 <CurrencyInput
                   placeholder="Digite o valor"
                   className="w-full input-class p-2 border border-gray-300 rounded mb-4"
@@ -27,14 +34,7 @@ const EditModal = ({isEditModalOpen, editTaskName, setEditTaskName, setIsEditMod
                   prefix="R$ "
                   value={editTaskCost}
                   onValueChange={(value) => setEditTaskCost(value)}
-                />
-                   
-                <input
-                  type="date"
-                  value={editTaskDeadline}
-                  onChange={(e) => setEditTaskDeadline(e.target.value)}
-                  className="w-full p-2 border border-gray-300 rounded mb-4"
-                />
+           />
                    
                 <div className="flex justify-end space-x-2">
                   <button
