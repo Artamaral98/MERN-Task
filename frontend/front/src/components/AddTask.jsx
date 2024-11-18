@@ -24,6 +24,7 @@ const Addtask = ({newTaskName, setNewTaskName, newTaskDeadline, setNewTaskDeadli
         className="input-class p-2 border border-gray-300 rounded"
         decimalsLimit={2}
         groupSeparator="."
+        allowNegativeValue={false}
         prefix="R$ "
         value={newTaskCost}
         onValueChange={(value) => setNewTaskCost(value)}
