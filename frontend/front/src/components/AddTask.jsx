@@ -1,7 +1,16 @@
 import CurrencyInput from 'react-currency-input-field';
 import { firstLetterToUpperCase } from '../utils/firstLetterToUpperCase';
+import { useRef, useEffect } from 'react';
 
 const Addtask = ({newTaskName, setNewTaskName, newTaskDeadline, setNewTaskDeadline, newTaskCost, setNewTaskCost, handleAddTask}) => {
+
+    const nameInputRef = useRef(null)
+
+    useEffect(() => {
+        if (nameInputRef) {
+            nameInputRef.current.focus()
+        }
+    }, [])
     
     return (
         <div className="fixed bottom-8 right-8 flex space-x-2 items-center">
@@ -9,6 +18,7 @@ const Addtask = ({newTaskName, setNewTaskName, newTaskDeadline, setNewTaskDeadli
           type="text"
           placeholder="Nome da Tarefa"
           value={newTaskName}
+          ref={nameInputRef}  
           onChange={(e) => setNewTaskName(firstLetterToUpperCase(e.target.value))}
           className="p-2 border border-gray-300 rounded"
         />
