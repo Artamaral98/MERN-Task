@@ -1,8 +1,17 @@
 import CurrencyInput from 'react-currency-input-field';
 import { firstLetterToUpperCase } from '../utils/firstLetterToUpperCase';
+import { useEffect, useRef } from 'react';
 
 const EditModal = ({isEditModalOpen, editTaskName, setEditTaskName, setIsEditModalOpen, editTaskDeadline,
      setEditTaskDeadline, editTaskCost, setEditTaskCost, handleSaveEdit}) => {
+
+     const nameInputRef = useRef(null)
+
+     useEffect(() => {
+       if (nameInputRef && isEditModalOpen) {
+          nameInputRef.current.focus()
+        }
+      }, [isEditModalOpen])
 
         return (
             <div>
@@ -14,6 +23,7 @@ const EditModal = ({isEditModalOpen, editTaskName, setEditTaskName, setIsEditMod
                 <input
                   type="text"
                   placeholder="Nome da Tarefa"
+                  ref={nameInputRef}
                   value={editTaskName}
                   onChange={(e) => setEditTaskName(firstLetterToUpperCase(e.target.value))}
                   className="w-full p-2 border border-gray-300 rounded mb-4"
