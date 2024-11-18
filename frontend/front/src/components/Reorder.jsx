@@ -21,7 +21,7 @@ const Reorder = ({tasks, setTasks, task, index, handleEdit, openDeleteModal }) =
       style={{ backgroundColor: parseInt(task.cost) >= 1000 ? '#d4c818' : 'white' }}
       className="border-b"
     >
-      <td className="py-3 px-4">{task._id}</td>
+      
       <td className="py-3 px-4">{task.name}</td>
       <td className="py-3 px-4">{formatDate(task.deadline.split("T")[0])}</td>
       <td className="py-3 px-4">
