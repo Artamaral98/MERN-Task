@@ -21,7 +21,7 @@ const App = () => {
     newTask, setNewTask, 
     editTask, setEditTask, 
     handleAddTask, handleEdit, handleSaveEdit, 
-    openDeleteModal, handleDelete 
+    openDeleteModal, handleDelete, handleReorderTasks  
   } = useTaskActions(tasks, setTasks) //Utiliza tasks e setTasks para utilizar as operações de Crud.
 
   const { currentPage, totalPages, displayedTasks, setCurrentPage } = usePagination(tasks);
