@@ -11,6 +11,13 @@ const Addtask = ({newTaskName, setNewTaskName, newTaskDeadline, setNewTaskDeadli
             nameInputRef.current.focus()
         }
     }, [])
+
+    const handleAddNameInputFocus = () => {
+        handleAddTask()
+        if (nameInputRef) {
+            nameInputRef.current.focus()
+        }
+    }
     
     return (
         <div className="fixed bottom-8 right-8 flex space-x-2 items-center">
@@ -40,7 +47,7 @@ const Addtask = ({newTaskName, setNewTaskName, newTaskDeadline, setNewTaskDeadli
         onValueChange={(value) => setNewTaskCost(value)}
       />
         <button
-          onClick={handleAddTask}
+          onClick={handleAddNameInputFocus}
           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-lg"
         >
           + Adicionar Tarefa
