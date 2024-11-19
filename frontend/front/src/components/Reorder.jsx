@@ -6,13 +6,14 @@ import { formatDate } from '../utils/formatDate';
 import CurrencyInput from 'react-currency-input-field';
 
 
-const Reorder = ({tasks, setTasks, task, index, handleEdit, openDeleteModal }) => {
+const Reorder = ({tasks, setTasks, task, index, handleEdit, openDeleteModal, handleReorderTasks }) => {
 
   const moveTask = (dragIndex, hoverIndex) => {
     const updatedTasks = [...tasks];
     const [draggedTask] = updatedTasks.splice(dragIndex, 1);
     updatedTasks.splice(hoverIndex, 0, draggedTask);
     setTasks(updatedTasks);
+    handleReorderTasks(updatedTasks)
   };
 
 
