@@ -8,6 +8,7 @@ router.put('/update/:id', crudControllers.updateTask)
 router.get('/get-all/', crudControllers.getAllTasks)
 router.delete('/delete/:id', crudControllers.deleteTask)
 router.get('/', crudControllers.teste)
+router.post('/update-order', crudControllers.updateTaskOrder)
 
 
 export default router
