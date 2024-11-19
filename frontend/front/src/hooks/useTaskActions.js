@@ -88,6 +88,28 @@ const useTaskActions = (tasks, setTasks) => {
           });
     }
 
+    const updateTaskOrder = async (tasksToUpdate) => {
+        try {
+          await api.post('/update-order', {
+            tasks: tasksToUpdate  //tasks é o req.body
+          });
+        } catch (error) {
+          toast.error(error.response.data.message)
+        }
+    }
+
+    const handleReorderTasks = async (reorderedTasks) => {
+      //insere as tasks reordenadas na lista de tasks
+      setTasks(reorderedTasks)
+      //envia a nova lista ao backend para que seja realizada a atualização da ordem
+      const tasksToUpdate = reorderedTasks.map((task, index) => ({
+        _id: task._id,
+        order: index + 1 
+      }))
+
+      await updateTaskOrder(tasksToUpdate)
+    }
+
     return {
         isEditModalOpen,
         setIsEditModalOpen,
@@ -101,7 +123,8 @@ const useTaskActions = (tasks, setTasks) => {
         handleEdit,
         handleSaveEdit,
         openDeleteModal,
-        handleDelete
+        handleDelete,
+        handleReorderTasks
       }
 }
 
