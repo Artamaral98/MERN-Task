@@ -45,6 +45,7 @@ const Addtask = ({newTaskName, setNewTaskName, newTaskDeadline, setNewTaskDeadli
         prefix="R$ "
         value={newTaskCost}
         onValueChange={(value) => setNewTaskCost(value)}
+        maxLength={12}
       />
         <button
           onClick={handleAddNameInputFocus}
