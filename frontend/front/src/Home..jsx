@@ -48,6 +48,7 @@ const App = () => {
                   setTasks={setTasks}
                   handleEdit={handleEdit}
                   openDeleteModal={openDeleteModal}
+                  handleReorderTasks={handleReorderTasks}
                 />
               ))}
             </tbody>
