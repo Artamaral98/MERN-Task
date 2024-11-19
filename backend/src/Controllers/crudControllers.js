@@ -5,7 +5,7 @@ class CrudControllers {
 
     getAllTasks = async (req, res) => {
         try {
-           const allTasks = await Task.find()
+           const allTasks = await Task.find().sort({order: 1})
            return responseReturn(res, 200, {tasks: allTasks })
 
         } catch (error) {
