@@ -46,6 +46,7 @@ const EditModal = ({isEditModalOpen, editTaskName, setEditTaskName, setIsEditMod
                   prefix="R$ "
                   value={editTaskCost}
                   onValueChange={(value) => setEditTaskCost(value)}
+                  maxLength={12}
            />
                    
                 <div className="flex justify-end space-x-2">
