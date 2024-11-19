@@ -113,6 +113,61 @@ class CrudControllers {
         res.json('ok')
     }
 
+    updateTaskOrder = async (req, res) => {
+        try {
+            const { tasks } = req.body;
+    
+            if (!tasks || !Array.isArray(tasks)) {
+                return responseReturn(res, 400, { message: "Lista de tarefas não encontrada" });
+            }
+    
+            //verificar se há valores duplicados para order
+            const orderSet = new Set(tasks.map(task => task.order));
+            if (orderSet.size !== tasks.length) {
+                return responseReturn(res, 400, { message: "Valores duplicados encontrados no campo 'order'" });
+            }
+    
+            // valor temporário que será atribuído inicialmente para order
+            const TEMPORARY_ORDER_BASE = 10000000;
+    
+            const session = await Task.startSession();
+            session.startTransaction();
+    
+            try {
+                //atualizar todos os orders para um valor temporário, resolvendo o problema de duplicação de orders no processo de atualização
+                for (const task of tasks) {
+                    const temporaryOrder = TEMPORARY_ORDER_BASE + task._id; 
+                    await Task.findByIdAndUpdate(task._id, { order: temporaryOrder }, { session });
+                }
+    
+                //atualizar para o order correto
+                for (const task of tasks) {
+                    await Task.findByIdAndUpdate(task._id, { order: task.order }, { session });
+                }
+    
+                // commit da transação
+                await session.commitTransaction();
+                session.endSession();
+    
+                return responseReturn(res, 200, {
+                    message: "Ordem das tarefas atualizada com sucesso",
+                    tasks
+                });
+    
+            } catch (innerError) {
+                // rollback caso ocorra erro
+                await session.abortTransaction();
+                session.endSession();
+                console.error('Erro durante a atualização das tarefas:', innerError.message);
+                return responseReturn(res, 500, { message: "Erro ao atualizar a ordem das tarefas" }, innerError.message);
+            }
+    
+        } catch (error) {
+            console.error('Erro externo:', error.message);
+            return responseReturn(res, 500, { message: "Erro ao atualizar a ordem das tarefas" }, error.message);
+        }
+    };
+
 
 
 
